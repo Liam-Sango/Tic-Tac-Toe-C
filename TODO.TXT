@@ -1,0 +1,9 @@
+1: Write Diagnol win checks.
+
+2:Write The main program loop
+
+3:Test and Debug
+
+4:Write basic documentation.
+
+5:Add license and README file.
