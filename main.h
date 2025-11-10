@@ -13,7 +13,6 @@ void make_game_move (char game_board [3][3], int target[2], int player_number);
 int check_winner (char game_board[3][3]);
 
 
-
 // Global variables declaration
 extern char gameboard[3][3];
 
