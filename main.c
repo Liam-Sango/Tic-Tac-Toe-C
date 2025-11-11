@@ -12,15 +12,6 @@ char gameboard[3][3] =
 
 /// Main function
 int main () {
-    int result = check_winner(gameboard);
-    if (result == 1) {
-        printf("Player 1 wins!\n");
-    } else if (result == 2) {
-        printf("Player 2 wins!\n");
-    } else {
-        printf("No winner yet.\n");
-    }
-    return 0;
  return 0;
 }
 
