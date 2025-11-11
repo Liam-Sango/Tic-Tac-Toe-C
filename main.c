@@ -5,6 +5,7 @@
 #include "main.h"
 
 int Win_status = 0;
+int board_fill_status = 0;
 char gameboard[3][3] = 
 { {' ', ' ', ' '}, 
   {' ', ' ', ' '}, 
@@ -13,6 +14,25 @@ char gameboard[3][3] =
 /// Main function
 int main () {
  return 0;
+}
+
+
+int check_board_fill(char game_board[3][3]) {
+    int c, r;
+    int space_counter = 0;
+    for (r = 0; r < 3; r++) {
+        for (c = 0; c < 3; c++) {
+            if (game_board[c][r] != 's ') {
+                space_counter++;
+            }
+        }
+    }
+    if (space_counter >= 9) {
+        board_fill_status = 1;
+    } else {
+        board_fill_status = 0;
+    }
+return board_fill_status;
 }
 
 void display_gameboard (char gameboard[3][3]) {
