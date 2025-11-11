@@ -1,4 +1,4 @@
-1: Write Diagnol win checks.
+1: Write Diagonal win checks. #DONE#
 
 2:Write The main program loop
 
