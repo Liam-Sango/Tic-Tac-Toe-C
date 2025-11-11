@@ -11,7 +11,8 @@ void reset_game_board(char game_board[3][3]);
 void make_game_move (char game_board [3][3], int target[2], int player_number);
 //checks for a winner   
 int check_winner (char game_board[3][3]);
-
+//checks if the board is fully filled
+int check_board_fill (char game_board[3][3]);
 
 // Global variables declaration
 extern char gameboard[3][3];
