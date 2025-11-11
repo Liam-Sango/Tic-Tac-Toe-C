@@ -6,9 +6,9 @@
 
 int Win_status = 0;
 char gameboard[3][3] = 
-{ {'x', 'X', 'X'}, 
-  {'O', 'O', 'O'}, 
-  {' ', 'X', ' '} };
+{ {' ', ' ', ' '}, 
+  {' ', ' ', ' '}, 
+  {' ', ' ', ' '} };
 
 /// Main function
 int main () {
@@ -82,6 +82,7 @@ for (c = 0; c < 3; c++) {
         }
     }
 }
+
 //check for verticle wins
 for (c = 0; c < 3; c++) {
     int player1_count = 0, player2_count = 0;
@@ -101,5 +102,44 @@ for (c = 0; c < 3; c++) {
          }
       }
    }
+
+
+int player1_count = 0, player2_count = 0;
+//Check for wins on the primary diagonal
+for (c = 0; c < 3; c++) {
+  r = c;
+  if (game_board[c][r] == Player1_symbol) {
+    player1_count++;
+  } else if ( game_board [c][r] == Player2_symbol) {
+    player2_count++;
+  }
+}
+if (player1_count == 3) {
+    Win_status = 1; // Player 1 wins
+    return Win_status;
+} else if (player2_count == 3) {
+    Win_status = 2; // Player 2 wins
+    return Win_status;
+}
+
+
+//Check for wins on the Secondary diagonal
+player1_count = 0, player2_count = 0;
+for (c = 0; c < 3; c++) {
+    r = 3 - c - 1;
+    if (game_board[c][r] == Player1_symbol) {
+    player1_count++;
+  } else if ( game_board [c][r] == Player2_symbol) {
+    player2_count++;
+  }
+}
+if (player1_count == 3) {
+    Win_status = 1; // Player 1 wins
+    return Win_status;
+} else if (player2_count == 3) {
+    Win_status = 2; // Player 2 wins
+    return Win_status;
+}
+
 return Win_status;
 }
