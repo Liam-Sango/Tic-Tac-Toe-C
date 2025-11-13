@@ -5,7 +5,6 @@
 #include "main.h"
 
 int Win_status = 0;
-int board_fill_status = 0;
 char gameboard[3][3] = 
 { 
     {' ', ' ', ' '}, 
@@ -15,96 +14,114 @@ char gameboard[3][3] =
 
 /// Main function
 int main () {
-    //Variables
+    //Local Variables
     bool player_1_Active;
     bool player_2_Active;
-    int move_target[1];
+    int move_target[2];
     int player_number;
 
     //Greets the players.
-    printf("\nWelcome to Norts and Crosses.\n\n");
+    printf("\nWelcome to Norts and Crosses.\n");
 
-
-    //Main_Loop
+    //Main loop
     while (true) {
-    }
+    /*#####  PLAYER 1  #####*/
 
-    //PLAYER 1
-    if (player_1_Active == true) {
+    printf("\n");
+    display_gameboard(gameboard);
     move_target[0] = 0, move_target[1] = 0;
     player_number = 1;
     //Gathers the row where player 1 wishes to place a peice.
-    printf("\n\n##Player 1##\n\nPlease enter The row number of the space where you want to place your piece.\n");
+    printf("\n##Player 1##\n\nPlease enter The row number of the space where you want to place your piece.\n");
+    printf("\nRow Number: ");
     scanf("%d", &move_target[0]);
-    if (move_target[0] > 3 || move_target[0] < 1) {
+    if (move_target[0] > 2 || move_target[0] < 0) {
         printf("\nYou entered an invalid Space... Exiting\n");
         exit(0); }
     
     //Gathers the collum where player 1 wishes to place a peice.
-    printf("\n\n##Player 1##\n\nPlease enter The Collum number of the space where you want to place your piece.\n");
+    printf("\nNow enter The Collum number of the space where you want to place your piece.\n");
+    printf("\nCollum Number: ");
     scanf("%d", &move_target[1]);
-    if (move_target[1] > 3 || move_target[1] < 1) {
+    if (move_target[1] > 2 || move_target[1] < 0) {
         printf("\nYou entered an invalid Space... Exiting\n");
         exit(0); }
 
-    check_board_fill(gameboard);
-    make_game_move(gameboard,move_target, player_number);
-    }
+    check_winner(gameboard);
+    make_game_move(gameboard, move_target, player_number);
+    check_winner(gameboard);
 
-    //PLAYER 2
-    
-    if (player_2_Active == true) {
+    if (Win_status == 1) {
+        printf("\n\n PLAYER 1 WINS\n\n");
+        exit(0);
+    } else if (Win_status == 2) {
+        printf("O WINS");    printf("\n\n");
+        exit(0);
+        printf("\n\n PLAYER 2 WINS\n\n");
+    } else if (Win_status == 3) {
+        printf("\n\n ITS A DRAW\n\n");
+        exit(0);
+        }
+
+
+
+    /*#####  PLAYER 2  #####*/
+
+    //Displays the gameboard, resets variables.
+    printf("\n\n");
+    display_gameboard(gameboard);
     move_target[0] = 0, move_target[1] = 0;
     player_number = 2;
-    //Gathers the row where player 2 wishes to place a peice.
-    printf("\n\nPlayer 2\nPlease enter The row number of the space where you want to place your piece.\n");
+    //Gathers the row where player 1 wishes to place a peice.
+    printf("\n\n##Player 2##\n\nPlease enter The row number of the space where you want to place your piece.\n");
+    printf("\nRow Number: ");
     scanf("%d", &move_target[0]);
-    if (move_target[0] > 3 || move_target[0] < 1) {
+    if (move_target[0] > 2 || move_target[0] < 0) {
         printf("\nYou entered an invalid Space... Exiting\n");
         exit(0); }
-    
-    //Gathers the collum where player 2 wishes to place a peice.
-    printf("\n\nPlayer 2\nPlease enter The Collum number of the space where you want to place your piece.\n");
+    //Gathers the collum where player 1 wishes to place a peice.
+    printf("\n\n##Player 2##\n\nPlease enter The Collum number of the space where you want to place your piece.\n");
+    printf("\nCollum Number: ");
     scanf("%d", &move_target[1]);
-    if (move_target[1] > 3 || move_target[1] < 1) {
+    if (move_target[1] > 2 || move_target[1] < 0) {
         printf("\nYou entered an invalid Space... Exiting\n");
         exit(0); }
-    
-    check_board_fill(gameboard);
+
+    //Checks for winners, Then Places player 2s move on the board
+    check_winner(gameboard);
     make_game_move(gameboard,move_target, player_number);
-    }
-    
+    check_winner(gameboard);
 
-    return 0;
-}
-
-int check_board_fill(char game_board[3][3]) {
-    int c, r;
-    int space_counter = 0;
-    for (r = 0; r < 3; r++) {
-        for (c = 0; c < 3; c++) {
-            if (game_board[c][r] != ' ') {
-                space_counter++;
-            }
+    //Ends the loop if someone wins
+     if (Win_status == 1) {
+        printf("\n\n PLAYER 1 WINS\n\n");
+        exit(0);
+    } else if (Win_status == 2) {
+        printf("O WINS");    printf("\n\n");
+        exit(0);
+        printf("\n\n PLAYER 2 WINS\n\n");
+    } else if (Win_status == 3) {
+        printf("\n\n ITS A DRAW\n\n");
+        exit(0);
         }
-    }
-    if (space_counter >= 9) {
-        Win_status = 3;
-    } else {
-        Win_status = 0;
-    }
-    return Win_status;
+}
+return 0;
 }
 
+
+// ### FUNCTIONS ###
 void display_gameboard(char gameboard[3][3]) {
-    int c, r;
-    printf("Current Game Board:\n");
+    int c, r, n;
+    printf("Current Game Board:\n\n");
     for (r = 0; r < 3; r++) {
+        printf ("%d: ", n);
+        n++;
         for (c = 0; c < 3; c++) {
             printf("%c ", gameboard[r][c]);
         }
         printf("\n");
     }
+    printf("\n");
 }
 
 void reset_game_board(char game_board[3][3]) {
@@ -120,14 +137,19 @@ void make_game_move(char game_board[3][3], int target[2], int player_number) {
     int c, r;
     int row = target[0], col = target[1];
     char player_symbol;
+    char opponent_symbol;
+
     if (player_number == 1) {
         player_symbol = 'X';
-    } else {
+        opponent_symbol = 'O';
+    } else if (player_number == 2 ){
+        player_symbol = 'X';
         player_symbol = 'O';
     }
+
     if (game_board[row][col] == ' ') {
         game_board[row][col] = player_symbol;
-    } else {
+    } else if (game_board[row][col] != ' ' ){
         printf("Invalid move! Cell already occupied.\n");
         exit(0);
     }
@@ -212,6 +234,19 @@ int check_winner(char game_board[3][3]) {
         Win_status = 2; // Player 2 wins
         return Win_status;
     }
+
+    //Checks if all spaces are filled.
+    int space_counter = 0;
+    for (r = 0; r < 3; r++) {
+        for (c = 0; c < 3; c++) {
+            if (game_board[c][r] != ' ') {
+                space_counter++;
+            }
+        }
+    }
+    if (space_counter >= 9) {
+        Win_status = 3;
+        return Win_status;}
 
     return Win_status;
 }

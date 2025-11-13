@@ -1,6 +1,6 @@
 1: Write Diagonal win checks. #DONE#
 
-2:Write The main program loop
+2:Write The main program loop #DONE#
 
 3:Test and Debug
 
