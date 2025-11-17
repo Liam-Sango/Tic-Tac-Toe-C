@@ -4,6 +4,6 @@
 
 3:Test and Debug #DONE#
 
-4:Write basic documentation.
+4:Write basic documentation. #DONE#
 
 5:Add license and README file. #DONE#
