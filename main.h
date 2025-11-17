@@ -4,7 +4,10 @@
 #include <stdio.h> 
 #include <stdlib.h>
 
+
+//GLOBAL VARS
 int win_status = 0;
+
 
 // FUNCTION DECLARATIONS (PROTOTYPES)
 
@@ -15,7 +18,7 @@ void display_gameboard(char gameboard[3][3]);
 void reset_game_board(char game_board[3][3]);
 
 // Makes a move on the gameboard
-int make_game_move(char game_board[3][3], int row, int col, int player_number);
+void make_game_move(char game_board[3][3], int target[2], int player_number);
 
 // Checks for a winner or a tie.
 int check_game_status(char game_board[3][3]);
