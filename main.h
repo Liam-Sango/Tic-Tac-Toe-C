@@ -4,12 +4,7 @@
 #include <stdio.h> 
 #include <stdlib.h>
 
-
-//GLOBAL VARS
 int win_status = 0;
-
-
-// FUNCTION DECLARATIONS (PROTOTYPES)
 
 // Displays GameBoard
 void display_gameboard(char gameboard[3][3]);
