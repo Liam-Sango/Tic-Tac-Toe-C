@@ -52,19 +52,3 @@ Current Game Board:
 5.  Player 2 ('O') will then be prompted to make their move.
 6.  The players alternate turns until one player gets three of their marks in a row (horizontally, vertically, or diagonally) or until the board is full, resulting in a draw.
 7.  The game will announce the winner or the draw and then exit.
-
-
-# AI DISCLAIMER 
-
-When developing this application, LLMs where used to
-
-# Write documentation (With manual human led proofreading)
-# fix Code spacing/indentation/Spelling (at the end of the development process)
-# Explain errors when present (Without providing complete fixes.)
-
-
-LLMS where not used
-
-# Write functional code (Writing functions, Complete features.)
-# Fixing bugs (Providing a "Fixed" code Snippet, ETC)
-
